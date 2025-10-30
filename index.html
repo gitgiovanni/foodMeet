@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Meet - Seu Delivery Saudável</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <img src="img/logo.png" alt="Food Meet Logo" class="logo">
+            <nav>
+                <a href="#login-modal" id="login-btn">Entrar / Cadastrar</a>
+                <a href="#cart" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Comer bem melhora sua vida.</h1>
+            <p>Peça já sua comida saudável no Food Meet.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="menu-comidas">
+            <h2>Pratos Principais</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/salada-frango.jpg" alt="Salada de Frango"> <h3>Salada Caesar com Frango</h3>
+                    <p>Alface romana, frango grelhado, croutons e molho caesar light.</p>
+                    <span class="price">R$ 29,90</span>
+                    <button class="add-to-cart-btn" data-id="1" data-name="Salada Caesar" data-price="29.90">Adicionar</button>
+                </div>
+                <div class="product-card">
+                    <img src="img/wrap-natural.jpg" alt="Wrap Natural"> <h3>Wrap Natural de Peito de Peru</h3>
+                    <p>Pão folha integral, peito de peru, queijo minas, alface e tomate.</p>
+                    <span class="price">R$ 22,00</span>
+                    <button class="add-to-cart-btn" data-id="2" data-name="Wrap Natural" data-price="22.00">Adicionar</button>
+                </div>
+                <div class="product-card">
+                    <img src="img/salmao-legumes.jpg" alt="Salmão com Legumes"> <h3>Salmão Grelhado com Legumes</h3>
+                    <p>Posta de salmão grelhado ao vapor com brócolis e cenoura.</p>
+                    <span class="price">R$ 45,50</span>
+                    <button class="add-to-cart-btn" data-id="3" data-name="Salmão Grelhado" data-price="45.50">Adicionar</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu-bebidas">
+            <h2>Bebidas</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/suco-laranja.jpg" alt="Suco de Laranja"> <h3>Suco de Laranja Natural</h3>
+                    <p>500ml de suco feito na hora.</p>
+                    <span class="price">R$ 12,00</span>
+                    <button class="add-to-cart-btn" data-id="4" data-name="Suco de Laranja" data-price="12.00">Adicionar</button>
+                </div>
+                <div class="product-card">
+                    <img src="img/agua-coco.jpg" alt="Água de Coco"> <h3>Água de Coco</h3>
+                    <p>Garrafa de 500ml.</p>
+                    <span class="price">R$ 9,00</span>
+                    <button class="add-to-cart-btn" data-id="5" data-name="Água de Coco" data-price="9.00">Adicionar</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu-sobremesas">
+            <h2>Sobremesas</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/salada-frutas.jpg" alt="Salada de Frutas"> <h3>Salada de Frutas</h3>
+                    <p>Mix de frutas da estação (300g).</p>
+                    <span class="price">R$ 15,00</span>
+                    <button class="add-to-cart-btn" data-id="6" data-name="Salada de Frutas" data-price="15.00">Adicionar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <aside id="cart" class="cart-sidebar">
+        <h2>Meu Carrinho</h2>
+        <div id="cart-items">
+            <p id="cart-empty-msg">Seu carrinho está vazio.</p>
+        </div>
+        <div class="cart-total">
+            <strong>Total:</strong>
+            <span id="cart-total">R$ 0,00</span>
+        </div>
+        <button id="checkout-btn">Finalizar Pedido</button>
+    </aside>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Login / Cadastro</h2>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+                <button type="submit" class="btn-primary">Entrar</button>
+                <a href="#" class="link-secondary">Não tenho cadastro</a>
+            </form>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Finalizar Pedido</h2>
+            <p>Seu pedido (<span id="checkout-total">R$ 0,00</span>) será enviado para:</p>
+            
+            <form id="checkout-form">
+                <h3>Endereço de Entrega</h3>
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" placeholder="Rua, Número, Bairro" required>
+                <label for="complemento">Complemento:</label>
+                <input type="text" id="complemento" name="complemento" placeholder="Apto / Bloco">
+
+                <h3>Forma de Pagamento</h3>
+                <select id="pagamento" name="pagamento" required>
+                    <option value="">Selecione...</option>
+                    <option value="pix">PIX</option>
+                    <option value="credito">Cartão de Crédito (na entrega)</option>
+                    <option value="debito">Cartão de Débito (na entrega)</option>
+                </select>
+
+                <button type="submit" class="btn-primary">Confirmar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Food Meet. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
