@@ -1,76 +1,77 @@
-// Aguarda o DOM (estrutura do site) carregar completamente
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Seletores de Elementos ---
     const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-    const cartItemsContainer = document.getElementById('cart-items');
+    const cartSidebar = document.getElementById('cart-sidebar');
+    const toggleCartSidebarBtn = document.getElementById('toggle-cart-sidebar');
+    const closeCartBtn = document.querySelector('.close-cart-btn');
+    const cartItemsList = document.getElementById('cart-items'); // Alterado para lista ul
     const cartTotalElement = document.getElementById('cart-total');
     const cartCountElement = document.getElementById('cart-count');
     const cartEmptyMsg = document.getElementById('cart-empty-msg');
+    const checkoutBtn = document.getElementById('checkout-btn');
     
-    // Modais
+    // Modais de Login/Checkout
     const loginBtn = document.getElementById('login-btn');
     const loginModal = document.getElementById('login-modal');
-    const checkoutBtn = document.getElementById('checkout-btn');
     const checkoutModal = document.getElementById('checkout-modal');
     const checkoutTotalElement = document.getElementById('checkout-total');
     const checkoutForm = document.getElementById('checkout-form');
-    const closeButtons = document.querySelectorAll('.close-btn');
+    const closeButtons = document.querySelectorAll('.modal .close-btn'); // Botões de fechar dos modais
+
+    // Formulários Login/Registro
+    const loginForm = document.getElementById('login-form');
+    const registerForm = document.getElementById('register-form');
+    const registerLink = document.querySelector('.register-link');
+    const loginLink = document.querySelector('.login-link');
+
+    // Campo de Troco
+    const pagamentoSelect = document.getElementById('pagamento');
+    const trocoField = document.querySelector('.troco-field');
+    const trocoInput = document.getElementById('troco');
+
+    // Menu Mobile
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
 
     // --- Estado do Carrinho ---
-    let cart = []; // Array para armazenar os produtos
+    let cart = [];
 
     // --- Funções Principais ---
 
-    /**
-     * Adiciona um item ao carrinho ou atualiza a quantidade.
-     */
     function addToCart(id, name, price) {
-        // Verifica se o item já existe no carrinho
         const existingItemIndex = cart.findIndex(item => item.id === id);
 
         if (existingItemIndex > -1) {
-            // Se existe, apenas aumenta a quantidade
             cart[existingItemIndex].quantity += 1;
         } else {
-            // Se não existe, adiciona o novo item
             cart.push({ id, name, price, quantity: 1 });
         }
-
-        // Atualiza a exibição do carrinho
         updateCartDisplay();
+        openCartSidebar(); // Abre o carrinho ao adicionar
     }
 
-    /**
-     * Remove um item do carrinho.
-     */
     function removeFromCart(id) {
-        // Filtra o array, mantendo todos os itens EXCETO o que tem o 'id' clicado
         cart = cart.filter(item => item.id !== id);
-
-        // Atualiza a exibição do carrinho
         updateCartDisplay();
     }
 
-    /**
-     * Atualiza o HTML do carrinho (a lista de itens, o total e o contador).
-     */
     function updateCartDisplay() {
-        // Limpa o contêiner de itens
-        cartItemsContainer.innerHTML = '';
+        cartItemsList.innerHTML = ''; // Limpa a lista
+        let totalQuantity = 0;
 
         if (cart.length === 0) {
-            // Mostra a mensagem de carrinho vazio
-            cartItemsContainer.appendChild(cartEmptyMsg);
+            cartItemsList.appendChild(cartEmptyMsg);
+            checkoutBtn.disabled = true; // Desabilita o botão se o carrinho está vazio
         } else {
-            // Oculta a mensagem de carrinho vazio (caso ela esteja lá)
-            if (cartItemsContainer.contains(cartEmptyMsg)) {
-                cartItemsContainer.removeChild(cartEmptyMsg);
+            // Remove a mensagem de vazio se ela estiver presente
+            if (cartEmptyMsg.parentNode === cartItemsList) {
+                cartItemsList.removeChild(cartEmptyMsg);
             }
 
-            // Adiciona cada item do carrinho ao HTML
             cart.forEach(item => {
                 const itemElement = document.createElement('li');
+                itemElement.classList.add('cart-item'); // Adiciona classe para estilização
                 itemElement.innerHTML = `
                     <div class="item-info">
                         <span>${item.name}</span>
@@ -79,98 +80,175 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="item-price">R$ ${(item.price * item.quantity).toFixed(2)}</span>
                     <button class="remove-from-cart-btn" data-id="${item.id}">&times;</button>
                 `;
-                cartItemsContainer.appendChild(itemElement);
+                cartItemsList.appendChild(itemElement);
+                totalQuantity += item.quantity;
             });
+            checkoutBtn.disabled = false; // Habilita o botão se há itens
         }
 
-        // Calcula e exibe o total
         calculateTotal();
+        cartCountElement.textContent = totalQuantity;
     }
 
-    /**
-     * Calcula o preço total e atualiza os elementos na tela.
-     */
     function calculateTotal() {
-        // 'reduce' soma o (preço * quantidade) de cada item
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        
-        cartTotalElement.textContent = `R$ ${total.toFixed(2)}`;
-        checkoutTotalElement.textContent = `R$ ${total.toFixed(2)}`; // Atualiza total no modal de checkout
-        cartCountElement.textContent = cart.reduce((sum, item) => sum + item.quantity, 0); // Soma a quantidade de itens
+        cartTotalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`; // Formato BR
+        checkoutTotalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`; // Formato BR
     }
 
-    /**
-     * Funções para abrir e fechar Modais.
-     */
     function openModal(modal) {
         modal.classList.add('show');
+        document.body.style.overflow = 'hidden'; // Evita scroll no body
     }
 
     function closeModal(modal) {
         modal.classList.remove('show');
+        document.body.style.overflow = ''; // Restaura scroll
     }
 
+    function openCartSidebar() {
+        cartSidebar.classList.add('open');
+        document.body.style.overflow = 'hidden'; // Evita scroll no body
+    }
 
-    // --- Event Listeners (Ouvintes de Eventos) ---
+    function closeCartSidebar() {
+        cartSidebar.classList.remove('open');
+        document.body.style.overflow = ''; // Restaura scroll
+    }
 
-    // 1. Cliques nos botões "Adicionar"
+    // --- Event Listeners ---
+
+    // 1. Adicionar ao Carrinho
     addToCartButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Pega os dados do produto a partir dos atributos 'data-*'
             const id = button.dataset.id;
             const name = button.dataset.name;
             const price = parseFloat(button.dataset.price);
-
             addToCart(id, name, price);
         });
     });
 
-    // 2. Cliques no contêiner de itens (para o botão "Remover")
-    cartItemsContainer.addEventListener('click', (event) => {
-        // Verifica se o clique foi em um botão de remover
+    // 2. Remover do Carrinho (usando delegação de eventos)
+    cartItemsList.addEventListener('click', (event) => {
         if (event.target.classList.contains('remove-from-cart-btn')) {
             const id = event.target.dataset.id;
             removeFromCart(id);
         }
     });
 
-    // 3. Abrir Modal de Login
-    loginBtn.addEventListener('click', (e) => {
-        e.preventDefault(); // Impede que o link '#' mude a URL
-        openModal(loginModal);
+    // 3. Abrir/Fechar Carrinho Sidebar
+    toggleCartSidebarBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        cartSidebar.classList.contains('open') ? closeCartSidebar() : openCartSidebar();
     });
+    closeCartBtn.addEventListener('click', closeCartSidebar);
 
-    // 4. Abrir Modal de Checkout
-    checkoutBtn.addEventListener('click', () => {
-        if (cart.length > 0) {
-            openModal(checkoutModal);
-        } else {
-            alert("Seu carrinho está vazio!");
+    // Fechar carrinho ao clicar fora dele (MAS NÃO em modais ou no próprio carrinho)
+    document.addEventListener('click', (e) => {
+        if (cartSidebar.classList.contains('open') && 
+            !cartSidebar.contains(e.target) && 
+            !toggleCartSidebarBtn.contains(e.target) &&
+            !e.target.closest('.product-card')) { // Ignora cliques nos cards de produto
+            closeCartSidebar();
         }
     });
 
-    // 5. Fechar Modais (qualquer botão 'X')
+
+    // 4. Abrir Modal de Login
+    loginBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(loginModal);
+        // Garante que o formulário de login esteja visível ao abrir
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+    });
+
+    // 5. Abrir Modal de Checkout
+    checkoutBtn.addEventListener('click', () => {
+        if (cart.length > 0) {
+            closeCartSidebar(); // Fecha o carrinho antes de abrir o checkout
+            openModal(checkoutModal);
+        } else {
+            alert("Seu carrinho está vazio!"); // Isto não deveria acontecer se o botão estiver desabilitado
+        }
+    });
+
+    // 6. Fechar Modais (botões 'X')
     closeButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Encontra o modal "pai" do botão que foi clicado
             const modal = button.closest('.modal');
             closeModal(modal);
         });
     });
 
-    // 6. Simulação de envio do Pedido
+    // 7. Simulação de envio do Pedido (Checkout)
     checkoutForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Impede o envio real do formulário
+        e.preventDefault();
+        alert("Pedido Food Meet enviado com sucesso! Em breve, entregaremos seu pedido saudável. (Esta é uma simulação)");
         
-        alert("Pedido enviado com sucesso! (Esta é uma simulação)");
-        
-        // Limpa o carrinho e fecha o modal
-        cart = [];
+        cart = []; // Limpa o carrinho
         updateCartDisplay();
         closeModal(checkoutModal);
+        checkoutForm.reset(); // Limpa o formulário de checkout
+        trocoField.style.display = 'none'; // Esconde o campo de troco
+        trocoInput.removeAttribute('required'); // Remove o required
     });
 
-    // --- Inicialização ---
-    updateCartDisplay(); // Chama a função uma vez no início para exibir "Carrinho vazio"
+    // 8. Lógica de Login/Cadastro
+    registerLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginForm.style.display = 'none';
+        registerForm.style.display = 'block';
+    });
+    loginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        registerForm.style.display = 'none';
+        loginForm.style.display = 'block';
+    });
 
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Login realizado com sucesso! (Simulação)");
+        closeModal(loginModal);
+        loginForm.reset();
+    });
+    registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert("Cadastro realizado com sucesso! (Simulação)");
+        closeModal(loginModal);
+        registerForm.reset();
+        // Opcional: Voltar para a tela de login após o cadastro
+        loginForm.style.display = 'block';
+        registerForm.style.display = 'none';
+    });
+
+    // 9. Lógica do Campo de Troco
+    pagamentoSelect.addEventListener('change', () => {
+        if (pagamentoSelect.value === 'dinheiro') {
+            trocoField.style.display = 'block';
+            trocoInput.setAttribute('required', 'required');
+        } else {
+            trocoField.style.display = 'none';
+            trocoInput.removeAttribute('required');
+        }
+    });
+
+    // 10. Menu Mobile Toggle
+    menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    });
+
+    // Fechar menu mobile ao clicar em um link
+    mainNav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mainNav.classList.contains('active')) {
+                mainNav.classList.remove('active');
+            }
+        });
+    });
+
+
+    // --- Inicialização ---
+    updateCartDisplay(); // Carrega o carrinho na inicialização
+    closeCartSidebar(); // Garante que o carrinho está fechado
 });
