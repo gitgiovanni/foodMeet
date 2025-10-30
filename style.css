@@ -1,35 +1,24 @@
-/* --- 0. Variáveis e Reset Básico --- */
+/* Configurações Globais e Variáveis de Cor */
 :root {
-    --primary-green: #5a9c46; /* Tom de verde principal da logo */
+    --primary-green: #5a9c46; /* Tom de verde principal (ajustado da sua logo) */
     --dark-green: #4a8a38;
-    --light-green: #e9f5e7; /* Verde bem clarinho para fundos */
-    --text-color-dark: #333;
-    --text-color-medium: #555;
-    --text-color-light: #777;
-    --bg-light: #f8f8f8;
+    --light-green: #f0f8f0;
+    --text-color: #333;
+    --light-gray: #f4f4f4;
     --white: #ffffff;
-    --red-alert: #e74c3c;
-    --border-light: #eee;
-    --shadow-light: 0 4px 10px rgba(0, 0, 0, 0.05);
-    --shadow-medium: 0 8px 20px rgba(0, 0, 0, 0.1);
-
-    --border-radius-base: 8px;
-    --transition-speed: 0.3s ease;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* Fontes modernas e fallback */
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-family: Arial, sans-serif;
 }
 
 body {
-    background-color: var(--bg-light);
-    color: var(--text-color-dark);
-    line-height: 1.6;
-    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+    background-color: var(--light-gray);
+    color: var(--text-color);
 }
 
 .container {
@@ -38,67 +27,15 @@ body {
     padding: 0 20px;
 }
 
-a {
-    color: var(--primary-green);
-    text-decoration: none;
-    transition: color var(--transition-speed);
-}
-
-a:hover {
-    color: var(--dark-green);
-}
-
-/* --- 1. Botões Genéricos --- */
-.btn-primary, .btn-secondary {
-    display: inline-block;
-    padding: 12px 25px;
-    border-radius: var(--border-radius-base);
-    font-weight: bold;
-    text-align: center;
-    cursor: pointer;
-    transition: background-color var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
-}
-
-.btn-primary {
+/* 1. Cabeçalho (Header) */
+header {
     background-color: var(--primary-green);
     color: var(--white);
-    border: 2px solid var(--primary-green);
-}
-
-.btn-primary:hover {
-    background-color: var(--dark-green);
-    border-color: var(--dark-green);
-    transform: translateY(-2px);
-}
-
-.btn-primary:disabled {
-    background-color: #cccccc;
-    border-color: #cccccc;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.btn-secondary {
-    background-color: var(--white);
-    color: var(--primary-green);
-    border: 2px solid var(--primary-green);
-}
-
-.btn-secondary:hover {
-    background-color: var(--light-green);
-    color: var(--dark-green);
-    transform: translateY(-2px);
-}
-
-
-/* --- 2. Header --- */
-header {
-    background-color: var(--white);
     padding: 15px 0;
-    box-shadow: var(--shadow-light);
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header .container {
@@ -108,314 +45,176 @@ header .container {
 }
 
 .logo {
-    height: 55px; /* Altura da sua logo */
-    object-fit: contain; /* Garante que a logo se ajuste sem cortar */
+    height: 50px; /* Ajuste a altura da sua logo */
 }
 
 header nav {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 header nav a {
-    color: var(--text-color-dark);
-    font-weight: 600;
-    font-size: 1.05rem;
-    display: flex;
-    align-items: center;
-    gap: 8px; /* Espaço entre ícone e texto */
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: opacity 0.3s;
 }
 
 header nav a:hover {
-    color: var(--primary-green);
+    opacity: 0.8;
 }
 
 .cart-icon {
     position: relative;
-    font-size: 1.4rem;
-    color: var(--primary-green); /* Ícone de carrinho verde */
-}
-
-.cart-icon:hover {
-    color: var(--dark-green);
+    font-size: 24px;
 }
 
 #cart-count {
     position: absolute;
     top: -8px;
     right: -10px;
-    background-color: var(--red-alert);
+    background-color: red;
     color: var(--white);
     border-radius: 50%;
-    padding: 3px 7px;
-    font-size: 0.75rem;
+    padding: 2px 6px;
+    font-size: 12px;
     font-weight: bold;
-    min-width: 24px; /* Garante que o círculo seja redondo mesmo com 1 dígito */
-    text-align: center;
 }
 
-/* --- Menu Hamburguer (Mobile) --- */
-.menu-toggle {
-    background: none;
-    border: none;
-    color: var(--primary-green);
-    font-size: 1.8rem;
-    cursor: pointer;
-    display: none; /* Escondido por padrão, aparece no mobile */
-}
-
-.mobile-nav-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1500;
-    display: none; /* Oculto por padrão */
-    opacity: 0;
-    transition: opacity var(--transition-speed);
-}
-
-.mobile-nav-overlay.open {
-    display: block;
-    opacity: 1;
-}
-
-.mobile-nav-menu {
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 280px;
-    background-color: var(--white);
-    padding: 20px;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    transform: translateX(100%); /* Escondido à direita */
-    transition: transform var(--transition-speed);
-}
-
-.mobile-nav-overlay.open .mobile-nav-menu {
-    transform: translateX(0); /* Mostra o menu */
-}
-
-.mobile-nav-menu a {
-    color: var(--text-color-dark);
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border-light);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.mobile-nav-menu a:last-of-type {
-    border-bottom: none;
-}
-
-.close-mobile-menu {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--text-color-medium);
-    cursor: pointer;
-}
-
-
-/* --- 3. Hero Section (Banner) --- */
+/* 2. Banner (Hero) */
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img/banner-saudavel.jpg'); /* Substitua 'banner-saudavel.jpg' pela sua imagem */
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('img/banner-saudavel.jpg'); /* Crie um banner ou use a img do seu Outdoor */
     background-size: cover;
     background-position: center;
     color: var(--white);
     text-align: center;
-    padding: 100px 20px;
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 450px; /* Altura mínima do banner */
-}
-
-.hero-content {
-    max-width: 700px;
+    padding: 80px 20px;
+    margin-bottom: 30px;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    line-height: 1.2;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-}
-
-.hero p {
-    font-size: 1.4rem;
-    margin-bottom: 30px;
+    font-size: 3rem;
+    margin-bottom: 10px;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
-.hero .btn-primary {
-    font-size: 1.2rem;
-    padding: 15px 35px;
-}
-
-/* --- 4. Main Content & Menus --- */
+/* 3. Conteúdo Principal e Menus */
 main {
     display: flex;
-    gap: 40px;
-    margin-bottom: 60px;
+    gap: 30px;
 }
 
-.menu-section {
-    flex: 3;
-}
-
-.menu-section h2, .about-us-section h2 {
-    font-size: 2.2rem;
-    color: var(--primary-green);
+/* Coluna de Menus (esquerda) */
+main section {
+    flex: 3; /* Ocupa 3/4 do espaço */
     margin-bottom: 30px;
-    text-align: left;
-    position: relative;
-    padding-bottom: 15px;
 }
 
-.menu-section h2::after, .about-us-section h2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 60px;
-    height: 4px;
-    background-color: var(--dark-green);
-    border-radius: 2px;
+main h2 {
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--primary-green);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
 .product-card {
     background-color: var(--white);
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-light);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .product-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-medium);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .product-card img {
     width: 100%;
-    height: 220px;
+    height: 200px;
     object-fit: cover;
-    border-bottom: 1px solid var(--border-light);
-}
-
-.product-info {
-    padding: 15px 20px 20px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
 }
 
 .product-card h3 {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-    color: var(--text-color-dark);
+    font-size: 1.2rem;
+    margin: 15px;
 }
 
 .product-card p {
-    font-size: 0.95rem;
-    color: var(--text-color-medium);
-    margin-bottom: 15px;
-    flex-grow: 1;
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0 15px 15px;
+    flex-grow: 1; /* Empurra o preço para baixo */
 }
 
 .product-card .price {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     font-weight: bold;
     color: var(--primary-green);
-    margin-bottom: 15px;
+    margin: 0 15px 15px;
 }
 
 .add-to-cart-btn {
-    width: 100%;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    padding: 12px 15px;
     font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
+.add-to-cart-btn:hover {
+    background-color: var(--dark-green);
+}
 
-/* --- 5. Carrinho (Sidebar) --- */
+/* 4. Carrinho (Sidebar) */
 .cart-sidebar {
-    flex: 1;
+    flex: 1; /* Ocupa 1/4 do espaço */
     background-color: var(--white);
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-light);
-    padding: 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    padding: 20px;
     position: sticky;
     top: 100px; /* Abaixo do header */
-    height: fit-content; /* Se ajusta ao conteúdo */
-    align-self: flex-start; /* Fixa o carrinho no topo da sua coluna */
+    height: fit-content;
 }
 
 .cart-sidebar h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     text-align: center;
-    border-bottom: 2px solid var(--primary-green);
+    border-bottom: 1px solid #eee;
     padding-bottom: 15px;
-    margin-bottom: 20px;
-    color: var(--primary-green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-#cart-items {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 #cart-empty-msg {
     text-align: center;
-    color: var(--text-color-light);
-    padding: 30px 0;
-    font-style: italic;
-    border: none; /* remove border-bottom de li */
+    color: #888;
+    padding: 20px 0;
 }
 
 #cart-items li {
+    list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px dashed var(--border-light);
-    font-size: 0.95rem;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.9rem;
 }
-#cart-items li:last-child {
-    border-bottom: none;
-}
-
 
 #cart-items .item-info {
     flex-grow: 1;
@@ -423,136 +222,66 @@ main {
 }
 #cart-items .item-info span {
     display: block;
-    font-weight: 600;
-    color: var(--text-color-dark);
+    font-weight: bold;
 }
 #cart-items .item-info .item-qty {
-    font-size: 0.85rem;
-    color: var(--text-color-light);
+    font-size: 0.8rem;
+    color: #777;
     font-weight: normal;
-    margin-top: 3px;
 }
 
 #cart-items .item-price {
     font-weight: bold;
-    color: var(--primary-green);
+    color: #555;
 }
 
 .remove-from-cart-btn {
     background: none;
     border: none;
-    color: var(--red-alert);
-    font-size: 1.2rem;
+    color: red;
+    font-size: 1rem;
     cursor: pointer;
     margin-left: 10px;
-    padding: 5px; /* Aumenta a área de clique */
-    transition: transform var(--transition-speed);
-}
-
-.remove-from-cart-btn:hover {
-    transform: scale(1.1);
 }
 
 .cart-total {
     display: flex;
     justify-content: space-between;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    margin-top: 25px;
-    padding-top: 20px;
+    margin-top: 20px;
+    padding-top: 15px;
     border-top: 2px solid var(--primary-green);
 }
 
 #checkout-btn {
-    margin-top: 25px;
-}
-
-/* --- 6. Seção Sobre Nós --- */
-.about-us-section {
-    padding: 40px 0;
-    margin-top: 40px;
-    background-color: var(--light-green);
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-light);
-    text-align: center;
-}
-
-.about-us-section h2 {
-    text-align: center;
-    margin-bottom: 25px;
-}
-.about-us-section h2::after {
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.about-us-section p {
-    max-width: 800px;
-    margin: 0 auto 30px;
-    font-size: 1.1rem;
-    color: var(--text-color-medium);
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.about-grid div {
-    background-color: var(--white);
-    padding: 25px;
-    border-radius: var(--border-radius-base);
-    box-shadow: var(--shadow-light);
-    text-align: center;
-    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
-}
-.about-grid div:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium);
-}
-
-
-.about-grid h3 {
-    font-size: 1.3rem;
-    color: var(--primary-green);
-    margin-bottom: 10px;
-}
-.about-grid p {
-    font-size: 0.95rem;
-    margin: 0;
-}
-
-
-/* --- 7. Rodapé (Footer) --- */
-footer {
-    background-color: var(--text-color-dark);
-    color: #b0b0b0;
-    text-align: center;
-    padding: 40px 0;
-    font-size: 0.9rem;
-}
-
-footer .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-.social-links a {
+    background-color: var(--dark-green);
     color: var(--white);
-    font-size: 1.5rem;
-    margin: 0 10px;
-    transition: color var(--transition-speed);
+    border: none;
+    padding: 15px;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
 }
 
-.social-links a:hover {
-    color: var(--primary-green);
+#checkout-btn:hover {
+    background-color: var(--primary-green);
 }
 
-/* --- 8. Modais (Login e Checkout) --- */
+/* 5. Rodapé (Footer) */
+footer {
+    background-color: #333;
+    color: #aaa;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 40px;
+}
+
+/* 6. Modais (Login e Checkout) */
 .modal {
     display: none; /* Oculto por padrão */
     position: fixed;
@@ -564,134 +293,75 @@ footer .container {
     background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    overflow-y: auto; /* Para modais que podem ser longos em mobile */
 }
 
 .modal.show {
-    display: flex;
+    display: flex; /* Exibido quando tem a classe 'show' */
 }
 
 .modal-content {
     background-color: var(--white);
     padding: 30px;
-    border-radius: var(--border-radius-base);
-    width: 95%;
-    max-width: 550px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
     position: relative;
-    box-shadow: var(--shadow-medium);
-    animation: fadeIn 0.3s ease-out; /* Animação simples */
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
 .close-btn {
     position: absolute;
     top: 15px;
     right: 20px;
-    font-size: 2.2rem;
-    color: var(--text-color-light);
+    font-size: 2rem;
+    color: #aaa;
     cursor: pointer;
-    transition: color var(--transition-speed);
-}
-
-.close-btn:hover {
-    color: var(--red-alert);
 }
 
 .modal-content h2 {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     color: var(--primary-green);
-    font-size: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-.modal-content h2 .fas {
-    font-size: 1.8rem;
 }
 
 /* Estilos de Formulário */
 form {
     display: flex;
     flex-direction: column;
-    gap: 18px;
-}
-
-form h3 {
-    color: var(--primary-green);
-    margin-top: 20px;
-    margin-bottom: 5px;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 form label {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--text-color-dark);
+    font-weight: bold;
+    font-size: 0.9rem;
 }
 
 form input, form select {
     padding: 12px;
-    border: 1px solid var(--border-light);
+    border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    width: 100%;
-    transition: border-color var(--transition-speed);
 }
 
-form input:focus, form select:focus {
-    border-color: var(--primary-green);
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(90, 156, 70, 0.2); /* Sombra suave no focus */
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-.modal-separator {
+.btn-primary:hover {
+    background-color: var(--dark-green);
+}
+
+.link-secondary {
+    color: var(--primary-green);
+    text-decoration: none;
     text-align: center;
-    margin: 15px 0;
-    color: var(--text-color-light);
-    position: relative;
+    margin-top: 10px;
 }
-.modal-separator::before,
-.modal-separator::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 40%;
-    height: 1px;
-    background-color: var(--border-light);
-}
-.modal-separator::before { left: 0; }
-.modal-separator::after { right: 0; }
-
-
-.checkout-summary {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    color: var(--text-color-dark);
-}
-
-
-/* --- 9. Responsividade (Media Queries) --- */
-
-/* Telas menores que 992px (tablets e alguns notebooks) */
-@media (max-width: 992px) {
-    main {
-        flex-direction: column; /* Coloca menus e carrinho em colunas */
-        gap: 30px;
-    }
-
-    .cart-sidebar {
-        position: relative; /* Remove o sticky */
-        top: 0;
-        width: 10
