@@ -3,84 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Meet - Seu Delivery Saudável</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Food Meet - Seu App de Delivery Saudável</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <div class="container">
-            <img src="logo.jpg" alt="Food Meet Logo" class="logo"> <nav>
-                <a href="#" id="login-btn"><i class="fas fa-user"></i> Entrar / Cadastrar</a>
-                <a href="#cart" class="cart-icon">
+        <div class="container header-content">
+            <a href="#" class="logo-link">
+                <img src="logo.jpg" alt="Food Meet Logo" class="logo">
+            </a>
+            <nav class="main-nav">
+                <a href="#menu-comidas">Comidas</a>
+                <a href="#menu-bebidas">Bebidas</a>
+                <a href="#menu-sobremesas">Sobremesas</a>
+                <a href="#" id="login-btn" class="nav-button primary-button">Entrar / Cadastrar</a>
+                <a href="#" class="cart-icon" id="toggle-cart-sidebar">
                     <i class="fas fa-shopping-cart"></i>
-                    <span id="cart-count">0</span>
+                    <span id="cart-count" class="cart-count">0</span>
                 </a>
-                <button class="menu-toggle"><i class="fas fa-bars"></i></button>
             </nav>
+            <button class="menu-toggle" aria-label="Abrir Menu">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <div class="mobile-nav-overlay">
-        <nav class="mobile-nav-menu">
-            <a href="#" id="mobile-login-btn"><i class="fas fa-user"></i> Entrar / Cadastrar</a>
-            <a href="#menu-comidas">Comidas</a>
-            <a href="#menu-bebidas">Bebidas</a>
-            <a href="#menu-sobremesas">Sobremesas</a>
-            <a href="#about-us">Sobre Nós</a>
-            <button class="close-mobile-menu"><i class="fas fa-times"></i></button>
-        </nav>
-    </div>
-
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Comer bem melhora sua vida.</h1>
-                <p>Peça já sua comida saudável e fresca, entregue na sua porta.</p>
-                <a href="#menu-comidas" class="btn-primary">Ver Cardápio Agora</a>
-            </div>
+        <div class="container hero-content">
+            <h1>Comer bem melhora sua vida.</h1>
+            <p>Peça já sua comida saudável no Food Meet e descubra um novo sabor.</p>
+            <a href="#menu-comidas" class="btn btn-primary">Ver Cardápio Agora</a>
         </div>
     </section>
 
-    <main class="container">
+    <main class="container main-content">
         <section id="menu-comidas" class="menu-section">
             <h2>Pratos Principais</h2>
             <div class="product-grid">
                 <div class="product-card">
-                    <img src="img/salada-frango.jpg" alt="Salada Caesar com Frango">
-                    <div class="product-info">
+                    <img src="img/produtos/salada-frango.jpg" alt="Salada Caesar com Frango">
+                    <div class="card-body">
                         <h3>Salada Caesar com Frango</h3>
                         <p>Alface romana, frango grelhado, croutons integrais e molho caesar light.</p>
-                        <span class="price">R$ 29,90</span>
-                        <button class="add-to-cart-btn" data-id="1" data-name="Salada Caesar c/ Frango" data-price="29.90">Adicionar <i class="fas fa-plus-circle"></i></button>
+                        <div class="card-footer">
+                            <span class="price">R$ 29,90</span>
+                            <button class="btn btn-secondary add-to-cart-btn" 
+                                data-id="1" data-name="Salada Caesar com Frango" data-price="29.90">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="img/wrap-natural.jpg" alt="Wrap Natural de Peito de Peru">
-                    <div class="product-info">
+                    <img src="img/produtos/wrap-natural.jpg" alt="Wrap Natural de Peito de Peru">
+                    <div class="card-body">
                         <h3>Wrap Natural de Peito de Peru</h3>
-                        <p>Pão folha integral, peito de peru, queijo minas, alface, tomate e cenoura.</p>
-                        <span class="price">R$ 22,00</span>
-                        <button class="add-to-cart-btn" data-id="2" data-name="Wrap Natural" data-price="22.00">Adicionar <i class="fas fa-plus-circle"></i></button>
+                        <p>Pão folha integral, peito de peru defumado, queijo minas frescal, alface e tomate cereja.</p>
+                        <div class="card-footer">
+                            <span class="price">R$ 22,00</span>
+                            <button class="btn btn-secondary add-to-cart-btn" 
+                                data-id="2" data-name="Wrap Natural de Peito de Peru" data-price="22.00">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="img/salmao-legumes.jpg" alt="Salmão Grelhado com Legumes">
-                    <div class="product-info">
+                    <img src="img/produtos/salmao-legumes.jpg" alt="Salmão Grelhado com Legumes">
+                    <div class="card-body">
                         <h3>Salmão Grelhado com Legumes</h3>
-                        <p>Posta de salmão fresco grelhado, acompanhado de brócolis e cenoura no vapor.</p>
-                        <span class="price">R$ 45,50</span>
-                        <button class="add-to-cart-btn" data-id="3" data-name="Salmão Grelhado" data-price="45.50">Adicionar <i class="fas fa-plus-circle"></i></button>
+                        <p>Posta de salmão fresco grelhado, acompanhado de brócolis e cenouras no vapor.</p>
+                        <div class="card-footer">
+                            <span class="price">R$ 45,50</span>
+                            <button class="btn btn-secondary add-to-cart-btn" 
+                                data-id="3" data-name="Salmão Grelhado com Legumes" data-price="45.50">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="product-card">
-                    <img src="img/risoto-legumes.jpg" alt="Risoto de Legumes">
-                    <div class="product-info">
-                        <h3>Risoto de Legumes Light</h3>
-                        <p>Arroz arbóreo integral com mix de legumes frescos e um toque de azeite extra virgem.</p>
-                        <span class="price">R$ 35,00</span>
-                        <button class="add-to-cart-btn" data-id="7" data-name="Risoto de Legumes" data-price="35.00">Adicionar <i class="fas fa-plus-circle"></i></button>
+                 <div class="product-card">
+                    <img src="img/produtos/frango-batata.jpg" alt="Frango Grelhado com Batata Doce">
+                    <div class="card-body">
+                        <h3>Frango Grelhado com Batata Doce</h3>
+                        <p>Filé de frango grelhado suculento e purê cremoso de batata doce.</p>
+                        <div class="card-footer">
+                            <span class="price">R$ 32,00</span>
+                            <button class="btn btn-secondary add-to-cart-btn" 
+                                data-id="7" data-name="Frango Grelhado com Batata Doce" data-price="32.00">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -90,21 +111,31 @@
             <h2>Bebidas Refrescantes</h2>
             <div class="product-grid">
                 <div class="product-card">
-                    <img src="img/suco-laranja.jpg" alt="Suco de Laranja Natural">
-                    <div class="product-info">
+                    <img src="img/produtos/suco-laranja.jpg" alt="Suco de Laranja Natural">
+                    <div class="card-body">
                         <h3>Suco de Laranja Natural</h3>
                         <p>500ml de puro suco de laranja, feito na hora, sem açúcar.</p>
-                        <span class="price">R$ 12,00</span>
-                        <button class="add-to-cart-btn" data-id="4" data-name="Suco de Laranja" data-price="12.00">Adicionar <i class="fas fa-plus-circle"></i></button>
+                        <div class="card-footer">
+                            <span class="price">R$ 12,00</span>
+                            <button class="btn btn-secondary add-to-cart-btn" 
+                                data-id="4" data-name="Suco de Laranja Natural" data-price="12.00">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="product-card">
-                    <img src="img/agua-coco.jpg" alt="Água de Coco Natural">
-                    <div class="product-info">
+                    <img src="img/produtos/agua-coco.jpg" alt="Água de Coco Natural">
+                    <div class="card-body">
                         <h3>Água de Coco Natural</h3>
-                        <p>Garrafa de 500ml de água de coco 100% natural, direto do coqueiro.</p>
-                        <span class="price">R$ 9,00</span>
-                        <button class="add-to-cart-btn" data-id="5" data-name="Água de Coco" data-price="9.00">Adicionar <i class="fas fa-plus-circle"></i></button>
+                        <p>Garrafa de 500ml, 100% natural, direto do coco.</p>
+                        <div class="card-footer">
+                            <span class="price">R$ 9,00</span>
+                            <button class="btn btn-secondary add-to-cart-btn" 
+                                data-id="5" data-name="Água de Coco Natural" data-price="9.00">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -114,63 +145,73 @@
             <h2>Sobremesas Leves</h2>
             <div class="product-grid">
                 <div class="product-card">
-                    <img src="img/salada-frutas.jpg" alt="Salada de Frutas Frescas">
-                    <div class="product-info">
+                    <img src="img/produtos/salada-frutas.jpg" alt="Salada de Frutas Frescas">
+                    <div class="card-body">
                         <h3>Salada de Frutas Frescas</h3>
-                        <p>Mix de frutas da estação cuidadosamente selecionadas (300g).</p>
-                        <span class="price">R$ 15,00</span>
-                        <button class="add-to-cart-btn" data-id="6" data-name="Salada de Frutas" data-price="15.00">Adicionar <i class="fas fa-plus-circle"></i></button>
+                        <p>Mix de frutas da estação cortadas na hora (300g), sem adição de açúcares.</p>
+                        <div class="card-footer">
+                            <span class="price">R$ 15,00</span>
+                            <button class="btn btn-secondary add-to-cart-btn" 
+                                data-id="6" data-name="Salada de Frutas Frescas" data-price="15.00">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about-us" class="about-us-section">
-            <h2>Sobre o Food Meet</h2>
-            <p>No Food Meet, acreditamos que comer de forma saudável deve ser fácil, delicioso e acessível. Nossa missão é trazer refeições frescas, nutritivas e preparadas com carinho diretamente para sua casa ou trabalho.</p>
-            <p>Utilizamos apenas ingredientes de alta qualidade, de fornecedores locais sempre que possível, para garantir que cada prato não só nutra seu corpo, mas também seja uma experiência saborosa. Conecte-se com uma vida mais saudável, um pedido de cada vez!</p>
-            <div class="about-grid">
-                <div>
-                    <h3>Ingredientes Frescos</h3>
-                    <p>Selecionamos a dedo os melhores ingredientes do dia para sua refeição.</p>
-                </div>
-                <div>
-                    <h3>Entrega Rápida</h3>
-                    <p>Seu pedido chega quentinho e na hora, para você aproveitar ao máximo.</p>
-                </div>
-                <div>
-                    <h3>Receitas Balanceadas</h3>
-                    <p>Pratos desenvolvidos por nutricionistas para sua saúde e bem-estar.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <aside id="cart" class="cart-sidebar">
-        <h2><i class="fas fa-shopping-cart"></i> Meu Carrinho</h2>
-        <ul id="cart-items">
-            <li id="cart-empty-msg" class="empty-message">Seu carrinho está vazio.</li>
-        </ul>
-        <div class="cart-total">
-            <strong>Total:</strong>
-            <span id="cart-total">R$ 0,00</span>
+    <aside id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Meu Carrinho</h2>
+            <button class="close-cart-btn" aria-label="Fechar Carrinho">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-        <button id="checkout-btn" class="btn-primary" disabled>Finalizar Pedido</button>
+        <ul id="cart-items" class="cart-items-list">
+            <li id="cart-empty-msg" class="cart-empty-msg">Seu carrinho está vazio.</li>
+        </ul>
+        <div class="cart-summary">
+            <div class="cart-total">
+                <strong>Total:</strong>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button id="checkout-btn" class="btn btn-primary btn-block" disabled>Finalizar Pedido</button>
+        </div>
     </aside>
 
     <div id="login-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2><i class="fas fa-user"></i> Entrar / Cadastrar</h2>
+            <h2>Bem-vindo ao Food Meet!</h2>
             <form id="login-form">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" placeholder="********" required>
-                <button type="submit" class="btn-primary">Entrar</button>
-                <a href="#" class="link-secondary">Esqueceu a senha?</a>
-                <p class="modal-separator">ou</p>
-                <button type="button" class="btn-secondary">Cadastrar-se</button>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" placeholder="********" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                <a href="#" class="link-secondary register-link">Não tenho cadastro? Crie uma conta.</a>
+            </form>
+            <form id="register-form" style="display: none;">
+                <div class="form-group">
+                    <label for="register-name">Nome Completo:</label>
+                    <input type="text" id="register-name" name="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email:</label>
+                    <input type="email" id="register-email" name="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-senha">Senha:</label>
+                    <input type="password" id="register-senha" name="register-senha" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                <a href="#" class="link-secondary login-link">Já tenho conta? Fazer Login.</a>
             </form>
         </div>
     </div>
@@ -178,36 +219,52 @@
     <div id="checkout-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2><i class="fas fa-receipt"></i> Finalizar Pedido</h2>
-            <p class="checkout-summary">Seu pedido de <strong id="checkout-total-summary">R$ 0,00</strong> será enviado.</p>
+            <h2>Finalizar Pedido</h2>
+            <p class="checkout-summary-text">Seu pedido totaliza <strong id="checkout-total">R$ 0,00</strong>.</p>
             
             <form id="checkout-form">
-                <h3><i class="fas fa-map-marker-alt"></i> Endereço de Entrega</h3>
-                <label for="endereco">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" placeholder="Rua, Número, Bairro" required>
-                <label for="complemento">Complemento (Opcional):</label>
-                <input type="text" id="complemento" name="complemento" placeholder="Apto / Bloco / Ponto de Referência">
-                <label for="cep">CEP:</label>
-                <input type="text" id="cep" name="cep" placeholder="XXXXX-XXX" required>
+                <h3>Endereço de Entrega</h3>
+                <div class="form-group">
+                    <label for="endereco">Rua e Número:</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Ex: Rua das Flores, 123" required>
+                </div>
+                <div class="form-group">
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" placeholder="Ex: Centro" required>
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade / Estado:</label>
+                    <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo / SP" required>
+                </div>
+                <div class="form-group">
+                    <label for="complemento">Complemento (opcional):</label>
+                    <input type="text" id="complemento" name="complemento" placeholder="Apto, Bloco, Referência">
+                </div>
+
+                <h3>Forma de Pagamento</h3>
+                <div class="form-group">
+                    <select id="pagamento" name="pagamento" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="pix">PIX</option>
+                        <option value="credito">Cartão de Crédito (na entrega)</option>
+                        <option value="debito">Cartão de Débito (na entrega)</option>
+                        <option value="dinheiro">Dinheiro (com troco para?)</option>
+                    </select>
+                </div>
+                <div class="form-group troco-field" style="display: none;">
+                    <label for="troco">Precisa de troco para quanto?</label>
+                    <input type="number" id="troco" name="troco" min="0" step="0.01" placeholder="Ex: 50.00">
+                </div>
 
 
-                <h3><i class="fas fa-money-bill-wave"></i> Forma de Pagamento</h3>
-                <select id="pagamento" name="pagamento" required>
-                    <option value="">Selecione...</option>
-                    <option value="pix">PIX</option>
-                    <option value="credito">Cartão de Crédito (na entrega)</option>
-                    <option value="debito">Cartão de Débito (na entrega)</option>
-                    <option value="dinheiro">Dinheiro (na entrega)</option>
-                </select>
-
-                <button type="submit" class="btn-primary">Confirmar Pedido</button>
+                <button type="submit" class="btn btn-primary btn-block">Confirmar Pedido</button>
             </form>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Food Meet. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Food Meet. Todos os direitos reservados. Design por Você.</p>
             <div class="social-links">
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
