@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
@@ -24,6 +23,7 @@
                 <a href="#menu-comidas">Comidas</a>
                 <a href="#menu-bebidas">Bebidas</a>
                 <a href="#menu-sobremesas">Sobremesas</a>
+                <a href="#" id="partner-btn" class="nav-link-secondary">Seja um Parceiro</a>
                 <a href="#" id="login-btn" class="nav-button primary-button">Entrar / Cadastrar</a>
                 <a href="#" class="cart-icon" id="toggle-cart-sidebar">
                     <i class="fas fa-shopping-cart"></i>
@@ -45,9 +45,11 @@
     </section>
 
     <main class="container main-content">
+        
         <section id="menu-comidas" class="menu-section">
             <h2>Pratos Principais</h2>
             <div class="product-grid">
+                
                 <div class="product-card">
                     <img src="img/produtos/salada-frango.jpg" alt="Salada Caesar com Frango">
                     <div class="card-body">
@@ -56,26 +58,28 @@
                         <div class="card-footer">
                             <span class="price">R$ 29,90</span>
                             <button class="btn btn-secondary add-to-cart-btn" 
-                                data-id="1" data-name="Salada Caesar com Frango" data-price="29.90">
+                                data-id="1" data-name="Salada Caesar com Frango" data-price="29.90" data-tags="frango, salada">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
                     </div>
                 </div>
+                
                 <div class="product-card">
-                    <img src="img/produtos/wrap-natural.jpg" alt="Wrap Natural de Peito de Peru">
+                    <img src="img/produtos/camarao-wok.jpg" alt="Camarão Wok com Legumes">
                     <div class="card-body">
-                        <h3>Wrap Natural de Peito de Peru</h3>
-                        <p>Pão folha integral, peito de peru defumado, queijo minas frescal, alface e tomate cereja.</p>
+                        <h3>Camarão Wok com Legumes</h3>
+                        <p>Camarões salteados com brócolis, cenoura e pimentão ao molho shoyu light.</p>
                         <div class="card-footer">
-                            <span class="price">R$ 22,00</span>
+                            <span class="price">R$ 48,00</span>
                             <button class="btn btn-secondary add-to-cart-btn" 
-                                data-id="2" data-name="Wrap Natural de Peito de Peru" data-price="22.00">
+                                data-id="8" data-name="Camarão Wok com Legumes" data-price="48.00" data-tags="frutos do mar, camarao">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
                     </div>
                 </div>
+                
                 <div class="product-card">
                     <img src="img/produtos/salmao-legumes.jpg" alt="Salmão Grelhado com Legumes">
                     <div class="card-body">
@@ -84,12 +88,13 @@
                         <div class="card-footer">
                             <span class="price">R$ 45,50</span>
                             <button class="btn btn-secondary add-to-cart-btn" 
-                                data-id="3" data-name="Salmão Grelhado com Legumes" data-price="45.50">
+                                data-id="3" data-name="Salmão Grelhado com Legumes" data-price="45.50" data-tags="peixe, salmao, frutos do mar">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
                     </div>
                 </div>
+                
                  <div class="product-card">
                     <img src="img/produtos/frango-batata.jpg" alt="Frango Grelhado com Batata Doce">
                     <div class="card-body">
@@ -98,7 +103,7 @@
                         <div class="card-footer">
                             <span class="price">R$ 32,00</span>
                             <button class="btn btn-secondary add-to-cart-btn" 
-                                data-id="7" data-name="Frango Grelhado com Batata Doce" data-price="32.00">
+                                data-id="7" data-name="Frango Grelhado com Batata Doce" data-price="32.00" data-tags="frango, batata">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
@@ -109,7 +114,7 @@
 
         <section id="menu-bebidas" class="menu-section">
             <h2>Bebidas Refrescantes</h2>
-            <div class="product-grid">
+             <div class="product-grid">
                 <div class="product-card">
                     <img src="img/produtos/suco-laranja.jpg" alt="Suco de Laranja Natural">
                     <div class="card-body">
@@ -118,21 +123,7 @@
                         <div class="card-footer">
                             <span class="price">R$ 12,00</span>
                             <button class="btn btn-secondary add-to-cart-btn" 
-                                data-id="4" data-name="Suco de Laranja Natural" data-price="12.00">
-                                <i class="fas fa-plus"></i> Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="img/produtos/agua-coco.jpg" alt="Água de Coco Natural">
-                    <div class="card-body">
-                        <h3>Água de Coco Natural</h3>
-                        <p>Garrafa de 500ml, 100% natural, direto do coco.</p>
-                        <div class="card-footer">
-                            <span class="price">R$ 9,00</span>
-                            <button class="btn btn-secondary add-to-cart-btn" 
-                                data-id="5" data-name="Água de Coco Natural" data-price="9.00">
+                                data-id="4" data-name="Suco de Laranja Natural" data-price="12.00" data-tags="bebida, suco, vegano">
                                 <i class="fas fa-plus"></i> Adicionar
                             </button>
                         </div>
@@ -140,138 +131,131 @@
                 </div>
             </div>
         </section>
-
-        <section id="menu-sobremesas" class="menu-section">
-            <h2>Sobremesas Leves</h2>
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="img/produtos/salada-frutas.jpg" alt="Salada de Frutas Frescas">
-                    <div class="card-body">
-                        <h3>Salada de Frutas Frescas</h3>
-                        <p>Mix de frutas da estação cortadas na hora (300g), sem adição de açúcares.</p>
-                        <div class="card-footer">
-                            <span class="price">R$ 15,00</span>
-                            <button class="btn btn-secondary add-to-cart-btn" 
-                                data-id="6" data-name="Salada de Frutas Frescas" data-price="15.00">
-                                <i class="fas fa-plus"></i> Adicionar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
     </main>
 
     <aside id="cart-sidebar" class="cart-sidebar">
-        <div class="cart-header">
-            <h2>Meu Carrinho</h2>
-            <button class="close-cart-btn" aria-label="Fechar Carrinho">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <ul id="cart-items" class="cart-items-list">
-            <li id="cart-empty-msg" class="cart-empty-msg">Seu carrinho está vazio.</li>
-        </ul>
-        <div class="cart-summary">
-            <div class="cart-total">
-                <strong>Total:</strong>
-                <span id="cart-total">R$ 0,00</span>
-            </div>
-            <button id="checkout-btn" class="btn btn-primary btn-block" disabled>Finalizar Pedido</button>
-        </div>
-    </aside>
+        </aside>
 
     <div id="login-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
-            <h2>Bem-vindo ao Food Meet!</h2>
-            <form id="login-form">
+            
+            <div class="form-step" id="step-1">
+                <h2>Bem-vindo ao Food Meet!</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" placeholder="********" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                </form>
+                <a href="#" class="link-secondary register-link" data-next-step="step-2">Não tenho cadastro? Crie uma conta.</a>
+            </div>
+
+            <div class="form-step" id="step-2" style="display: none;">
+                <h2>Crie sua Conta</h2>
+                <form id="register-form-basic">
+                    <div class="form-group">
+                        <label for="register-name">Nome Completo:</label>
+                        <input type="text" id="register-name" name="register-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email:</label>
+                        <input type="email" id="register-email" name="register-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-senha">Senha:</label>
+                        <input type="password" id="register-senha" name="register-senha" required>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-block" data-next-step="step-3">Próximo</button>
+                    <a href="#" class="link-secondary login-link" data-next-step="step-1">Já tenho conta? Fazer Login.</a>
+                </form>
+            </div>
+            
+            <div class="form-step" id="step-3" style="display: none;">
+                <h2>Preferências e Restrições</h2>
+                <p>Nos ajude a personalizar sua experiência!</p>
+                
+                <form id="register-form-prefs">
+                    <div class="form-group">
+                        <label>Alerta de Alergias</label>
+                        <p class="form-hint">Marque os itens abaixo para ser avisado ao adicionar produtos.</p>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label"><input type="checkbox" name="alergia" value="frutos do mar"> Frutos do Mar</label>
+                            <label class="checkbox-label"><input type="checkbox" name="alergia" value="gluten"> Glúten</label>
+                            <label class="checkbox-label"><input type="checkbox" name="alergia" value="lactose"> Lactose</label>
+                            <label class="checkbox-label"><input type="checkbox" name="alergia" value="amendoim"> Amendoim</label>
+                        </div>
+                        <input type="text" id="alergia-outros" name="alergia-outros" placeholder="Outras alergias? Ex: Pimenta, Soja...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Quais suas preferências/objetivos?</label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label"><input type="checkbox" name="objetivo" value="proteina"> Rico em Proteína</label>
+                            <label class="checkbox-label"><input type="checkbox" name="objetivo" value="low-carb"> Baixo Carboidrato</label>
+                            <label class="checkbox-label"><input type="checkbox" name="objetivo" value="fibras"> Rico em Fibras</label>
+                            <label class="checkbox-label"><input type="checkbox" name="objetivo" value="vegano"> Vegano</label>
+                            <label class="checkbox-label"><input type="checkbox" name="objetivo" value="vegetariano"> Vegetariano</label>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-secondary prev-step-btn" data-prev-step="step-2">Voltar</button>
+                    <button type="submit" class="btn btn-primary" id="finish-register-btn">Finalizar Cadastro</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="partner-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Seja um Parceiro Food Meet</h2>
+            <p>Cadastre seu restaurante saudável e alcance mais clientes!</p>
+            <form id="partner-form">
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    <label for="partner-nome">Nome do Restaurante:</label>
+                    <input type="text" id="partner-nome" name="partner-nome" required>
                 </div>
                 <div class="form-group">
-                    <label for="senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" placeholder="********" required>
+                    <label for="partner-cnpj">CNPJ:</label>
+                    <input type="text" id="partner-cnpj" name="partner-cnpj" placeholder="00.000.000/0001-00" required>
                 </div>
-                <button type="submit" class="btn btn-primary btn-block">Entrar</button>
-                <a href="#" class="link-secondary register-link">Não tenho cadastro? Crie uma conta.</a>
+                <div class="form-group">
+                    <label for="partner-email">Email de Contato:</label>
+                    <input type="email" id="partner-email" name="partner-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="partner-tipo">Tipo de Culinária:</label>
+                    <input type="text" id="partner-tipo" name="partner-tipo" placeholder="Ex: Vegana, Low Carb, Funcional" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Enviar Cadastro (Simulação)</button>
             </form>
-            <form id="register-form" style="display: none;">
-                <div class="form-group">
-                    <label for="register-name">Nome Completo:</label>
-                    <input type="text" id="register-name" name="register-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-email">Email:</label>
-                    <input type="email" id="register-email" name="register-email" required>
-                </div>
-                <div class="form-group">
-                    <label for="register-senha">Senha:</label>
-                    <input type="password" id="register-senha" name="register-senha" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
-                <a href="#" class="link-secondary login-link">Já tenho conta? Fazer Login.</a>
-            </form>
+        </div>
+    </div>
+    
+    <div id="allergy-alert-modal" class="modal">
+        <div class="modal-content alert-modal-content">
+            <i class="fas fa-exclamation-triangle alert-icon"></i>
+            <h2>Atenção!</h2>
+            <p id="allergy-alert-text">Este produto contém um ingrediente ao qual você tem alergia.</p>
+            <div class="alert-buttons">
+                <button class="btn btn-secondary" id="cancel-add-btn">Cancelar</button>
+                <button class="btn btn-primary" id="confirm-add-btn">Adicionar Mesmo Assim</button>
+            </div>
         </div>
     </div>
 
     <div id="checkout-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Finalizar Pedido</h2>
-            <p class="checkout-summary-text">Seu pedido totaliza <strong id="checkout-total">R$ 0,00</strong>.</p>
-            
-            <form id="checkout-form">
-                <h3>Endereço de Entrega</h3>
-                <div class="form-group">
-                    <label for="endereco">Rua e Número:</label>
-                    <input type="text" id="endereco" name="endereco" placeholder="Ex: Rua das Flores, 123" required>
-                </div>
-                <div class="form-group">
-                    <label for="bairro">Bairro:</label>
-                    <input type="text" id="bairro" name="bairro" placeholder="Ex: Centro" required>
-                </div>
-                <div class="form-group">
-                    <label for="cidade">Cidade / Estado:</label>
-                    <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo / SP" required>
-                </div>
-                <div class="form-group">
-                    <label for="complemento">Complemento (opcional):</label>
-                    <input type="text" id="complemento" name="complemento" placeholder="Apto, Bloco, Referência">
-                </div>
-
-                <h3>Forma de Pagamento</h3>
-                <div class="form-group">
-                    <select id="pagamento" name="pagamento" required>
-                        <option value="">Selecione uma opção</option>
-                        <option value="pix">PIX</option>
-                        <option value="credito">Cartão de Crédito (na entrega)</option>
-                        <option value="debito">Cartão de Débito (na entrega)</option>
-                        <option value="dinheiro">Dinheiro (com troco para?)</option>
-                    </select>
-                </div>
-                <div class="form-group troco-field" style="display: none;">
-                    <label for="troco">Precisa de troco para quanto?</label>
-                    <input type="number" id="troco" name="troco" min="0" step="0.01" placeholder="Ex: 50.00">
-                </div>
-
-
-                <button type="submit" class="btn btn-primary btn-block">Confirmar Pedido</button>
-            </form>
         </div>
-    </div>
-
+    
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Food Meet. Todos os direitos reservados. Design por Você.</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
+        </footer>
 
     <script src="script.js"></script>
 </body>
