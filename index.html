@@ -131,11 +131,47 @@
                 </div>
             </div>
         </section>
+
+        <section id="menu-sobremesas" class="menu-section">
+            <h2>Sobremesas Leves</h2>
+             <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/produtos/salada-frutas.jpg" alt="Salada de Frutas Frescas">
+                    <div class="card-body">
+                        <h3>Salada de Frutas Frescas</h3>
+                        <p>Mix de frutas da estação cortadas na hora (300g).</p>
+                        <div class="card-footer">
+                            <span class="price">R$ 15,00</span>
+                            <button class="btn btn-secondary add-to-cart-btn" 
+                                data-id="6" data-name="Salada de Frutas Frescas" data-price="15.00" data-tags="sobremesa, vegano, sem gluten">
+                                <i class="fas fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
     </main>
 
     <aside id="cart-sidebar" class="cart-sidebar">
-        </aside>
+        <div class="cart-header">
+            <h2>Meu Carrinho</h2>
+            <button class="close-cart-btn" aria-label="Fechar Carrinho">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul id="cart-items" class="cart-items-list">
+            <li id="cart-empty-msg" class="cart-empty-msg">Seu carrinho está vazio.</li>
+        </ul>
+        <div class="cart-summary">
+            <div class="cart-total">
+                <strong>Total:</strong>
+                <span id="cart-total">R$ 0,00</span>
+            </div>
+            <button id="checkout-btn" class="btn btn-primary btn-block" disabled>Finalizar Pedido</button>
+        </div>
+    </aside>
 
     <div id="login-modal" class="modal">
         <div class="modal-content">
@@ -252,10 +288,61 @@
     </div>
 
     <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Finalizar Pedido</h2>
+            <p class="checkout-summary-text">Seu pedido totaliza <strong id="checkout-total">R$ 0,00</strong>.</p>
+            
+            <form id="checkout-form">
+                <h3>Endereço de Entrega</h3>
+                <div class="form-group">
+                    <label for="endereco">Rua e Número:</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Ex: Rua das Flores, 123" required>
+                </div>
+                <div class="form-group">
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" placeholder="Ex: Centro" required>
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade / Estado:</label>
+                    <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo / SP" required>
+                </div>
+                <div class="form-group">
+                    <label for="complemento">Complemento (opcional):</label>
+                    <input type="text" id="complemento" name="complemento" placeholder="Apto, Bloco, Referência">
+                </div>
+
+                <h3>Forma de Pagamento</h3>
+                <div class="form-group">
+                    <select id="pagamento" name="pagamento" required>
+                        <option value="">Selecione uma opção</option>
+                        <option value="pix">PIX</option>
+                        <option value="credito">Cartão de Crédito (na entrega)</option>
+                        <option value="debito">Cartão de Débito (na entrega)</option>
+                        <option value="dinheiro">Dinheiro (com troco para?)</option>
+                    </select>
+                </div>
+                <div class="form-group troco-field" style="display: none;">
+                    <label for="troco">Precisa de troco para quanto?</label>
+                    <input type="number" id="troco" name="troco" min="0" step="0.01" placeholder="Ex: 50.00">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary btn-block">Confirmar Pedido</button>
+            </form>
         </div>
+    </div>
     
     <footer>
-        </footer>
+        <div class="container">
+            <p>&copy; 2025 Food Meet. Todos os direitos reservados. Design por Você.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
