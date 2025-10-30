@@ -771,3 +771,104 @@ footer p {
         margin-left: 0;
     }
 }
+
+/* --- 10. Estilos Adicionais (Novas Features) --- */
+
+/* Link "Seja um Parceiro" no Header */
+.nav-link-secondary {
+    font-weight: 600;
+    color: var(--light-green); /* Cor sutil */
+    text-decoration: none;
+    transition: color 0.3s ease;
+    padding: var(--spacing-xs) 0;
+}
+.nav-link-secondary:hover {
+    color: var(--white);
+    opacity: 1;
+}
+
+/* Modal de Múltiplas Etapas */
+.form-step {
+    animation: fadeIn 0.5s ease-out; /* Usa a animação já definida */
+}
+
+/* Questionário de Preferências (Checkboxes) */
+.form-group .form-hint {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: var(--spacing-sm);
+}
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    background-color: var(--off-white);
+    padding: var(--spacing-sm);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.checkbox-label:hover {
+    border-color: var(--primary-green);
+    background-color: var(--light-green);
+}
+.checkbox-label input[type="checkbox"] {
+    margin-right: var(--spacing-xs);
+    /* Estilos customizados de checkbox podem ser complexos; 
+       o padrão do navegador é funcional. */
+}
+.checkbox-label input[type="checkbox"]:checked + span {
+    font-weight: bold; /* Exemplo simples */
+}
+
+/* Botões de Navegação (Voltar/Próximo) */
+.prev-step-btn {
+    margin-right: var(--spacing-xs);
+}
+
+/* Modal de Alerta de Alergia */
+.alert-modal-content {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.alert-icon {
+    font-size: 4rem;
+    color: #f39c12; /* Laranja de alerta */
+    margin-bottom: var(--spacing-md);
+}
+
+.alert-modal-content h2 {
+    color: #e74c3c; /* Vermelho de perigo */
+    margin-bottom: var(--spacing-sm);
+}
+
+#allergy-alert-text {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-lg);
+}
+
+.alert-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+.alert-buttons .btn {
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+/* Responsividade para Checkbox Grid */
+@media (max-width: 480px) {
+    .checkbox-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    }
+}
